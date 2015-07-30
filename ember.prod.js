@@ -47008,6 +47008,7 @@ enifed("ember-views/views/view", ["exports", "ember-metal/core", "ember-runtime/
     mutation.trigger("change");
   };
 
+View.reopenClass({
   /**
     Global views hash
   
@@ -47016,15 +47017,15 @@ enifed("ember-views/views/view", ["exports", "ember-metal/core", "ember-runtime/
     @type Object
     @private
   */
-  View.views = {};
+  views: {};
 
   // If someone overrides the child views computed property when
   // defining their class, we want to be able to process the user's
   // supplied childViews and then restore the original computed property
   // at view initialization time. This happens in Ember.ContainerView's init
   // method.
-  View.childViewsProperty = _emberViewsMixinsView_child_views_support.childViewsProperty;
-
+  childViewsProperty: _emberViewsMixinsView_child_views_support.childViewsProperty;
+});
   var DeprecatedView = View.extend({
     init: function () {
       this._super.apply(this, arguments);
